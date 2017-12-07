@@ -1,2 +1,2 @@
 # To Do
-- []Upload to GitHub
+-[] Upload to GitHub
