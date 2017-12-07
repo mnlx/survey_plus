@@ -1,0 +1,4 @@
+django==1.11
+django-registration-redux == 1.7
+djangorestframework==3.6.3
+wagtail == 1.12.*

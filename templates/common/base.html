@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>
+
+      Rango -
+      {% block title_block %}
+        How to Tango with Django!
+      {% endblock %}
+    </title>
+
+
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" href="{% static '/css/materialize.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="{% static '/js/jQuery.js' %}"></script>
+    <script src="{% static '/js/jquery-rango.js' %}"></script>
+    <script src="{% static '/js/materialize.js' %}"></script>
+    <script src="{% static '/js/base.js' %}"></script>
+
+        {% block head %}
+
+        {% endblock %}
+  </head>
+
+  <body class="grey lighten-2">
+
+{#        <ul id="conversationsdd" class="dropdown-content">#}
+{#            <li><a href="{% url 'conversations:friends' %}">Friends</a></li>#}
+{#            <li><a href="{% url 'conversations:messages' %}">Messages</a></li>#}
+{#        </ul>#}
+    <nav >
+    <div class="nav-wrapper light-blue accent-4" >
+
+        <a href="#!" class="brand-logo"><i class="material-icons">label_outline</i>MNLX</a>
+        <ul class="right hide-on-med-and-down">
+{#          <li><a href="{% url 'rango:index' %}">Rango</a></li>#}
+{#          <li><a href="{% url 'conversations:friends' %}">Conversations</a></li>#}
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="conversationsdd">Conversations<i class="material-icons right">arrow_drop_down</i></a></li>
+
+{#          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>#}
+        </ul>
+    </div>
+    </nav>
+
+    {% block secondary_sidebar_base %}
+    {% endblock %}
+
+    <div class="container white main-container z-depth-1">
+
+      {%block body_block%}
+      {%endblock%}
+
+    </div>
+  </body>
+</html>

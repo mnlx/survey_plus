@@ -1,0 +1,22 @@
+{% extends "rango/../common/base.html" %}
+{% block body_block %}
+
+
+    <div class="col offset-md-4">
+        <div class="login-container">
+            <form action="." method="post" role="form" class="form-signin">
+                {% csrf_token %}
+                <br>
+                <h2 class="form-signin-heading">Sign In</h2>
+                <br>
+
+                <lable for="inputUsername" class="sr-only">Username</lable>
+                <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>
+                <br>
+                <lable for="inputPassword" class="sr-only">Password</lable>
+                <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>
+                <button type="submit" value="Submit" class="btn btn-lg btn-primary btn-block"> Sign in </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

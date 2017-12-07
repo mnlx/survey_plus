@@ -1,0 +1,167 @@
+{% extends 'common/base.html' %}
+
+{% block head %}
+<script>
+
+$(document).ready(
+    function () {
+
+
+    console.log('true');
+    order = 0;
+    $('#text-btn').click(
+        function () {
+            order++ ;
+
+            new_field = $('div#text-field').clone().appendTo('#form-append').removeAttr('hidden');
+            new_field.attr('id', 'text-field-used');
+            name = new_field.children('#name').attr('name', 'text_'+ order);
+
+            label = new_field.children('#label').attr('for', 'text_'+ order).html('TextField ' + order);
+
+        }
+    );
+
+    $('#date-btn').click(
+        function () {
+            order++ ;
+
+            new_field = $('div#date-field').clone().appendTo('#form-append').removeAttr('hidden');
+            new_field.attr('id', 'date-field-used');
+            name = new_field.children('#name').attr('name', 'date_'+ order);
+
+            label = new_field.children('#label').attr('for', 'date_'+ order).html('DateField ' + order);
+        }
+    );
+
+
+    $('#check-btn').click(
+        function () {
+            order++ ;
+
+            new_field = $('div#check-field').clone().appendTo('#form-append').removeAttr('hidden');
+            new_field.attr('id', 'check-field-used');
+            name = new_field.children('#name').attr('name', 'check_'+ order);
+
+            label = new_field.children('#label').attr('for', 'check_'+ order).html('CheckboxField ' + order);
+        }
+    );
+
+
+    $('#choice-btn').click(
+        function () {
+            order++ ;
+
+            new_field = $('div#choice-field').clone().appendTo('#form-append').removeAttr('hidden');
+            new_field.attr('id', 'choice-field-used');
+            name = new_field.find('#name').attr('name', 'choice_'+ order +'[]');
+
+            label = new_field.find('#label').attr('for', 'choice_'+ order +'[]').html('MultipleChoiceField ' + order);
+
+            new_field.children('#add-choice-btn').attr('id','add-choice-btn'+order).attr('value',order);
+            new_field.children('#clone').attr('id','clone'+order);
+
+            new_field.children('#name-change').attr('name','choice_'+order);
+
+            $('.add-choice-btn').click(
+                function () {
+                    id = $(this).val();
+                    $(this).parent().children('#clone'+id).clone().attr('id','cloned'+id).appendTo($('#clone' +id).parent())
+                }
+            );
+        }
+    );
+
+
+
+     $('select').material_select();
+
+    }
+)
+
+</script>
+{% endblock %}
+
+
+{% block body_block %}
+<button id="text-btn" class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Text</button><button id="date-btn" class="btn btn-floating">Date</button>
+    <button class="waves-effect waves-light btn btn-floating" id="check-btn">Check</button><button id="choice-btn" class="waves-effect waves-light btn btn-floating">Choice</button>
+
+    <form action="{% url 'forms:surveycreate' %}" id="survey" method="post" name="survey">{% csrf_token %}
+
+        <div id="date-field" class="row">
+
+
+        {#    <input type="hidden" name="order" value="">#}
+        </div>
+
+
+
+
+
+
+
+        <div id="form-append">
+
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+<div hidden id="text-field" class="row">
+    <label id="label" for="name">Name</label>
+    <input type="text"  name="name" id="name" class="m4" placeholder="Name of the textfield">
+
+</div>
+
+
+<div hidden id="date-field" class="row">
+    <label id="label" for="name">Name</label>
+    <input type="text"  name="name" id="name" class="m4" placeholder="Name of the datefield">
+
+</div>
+
+<div hidden id="check-field" class="row">
+    <label id="label" for="name">Name</label>
+    <input type="text"  name="name" id="name" class="m4" placeholder="Name of the Checkbox field">
+
+</div>
+
+<div hidden id="choice-field" class="row">
+
+
+    <input type="text"  name="name" id="name-change" class="m4" placeholder="Name of the Multiple choice field">
+    <button type="button" class="add-choice-btn" id="add-choice-btn">Add Choice</button>
+    <div id="clone">
+            <label id="label" for="name">Name</label>
+            <input type="text"  name="name" id="name" class="m4" placeholder="Name of the Multiple choice option">
+    </div>
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+{#CODIGO IMPORTANTE PARA CHECKBOX#}
+
+        {% for i in form.mchoice %}
+
+
+
+           <p>
+            <input  id="test {{ forloop.counter0 }}" type="checkbox" name="send[]" value="off">
+            <label for="test {{ forloop.counter0 }}">
+             {{ i.choice_label  }}</label>
+           </p>
+
+
+
+
+        {% endfor %}

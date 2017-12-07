@@ -1,0 +1,48 @@
+{% extends "rango/../common/base.html" %}
+{% block body_block %}
+    <div class="col offset-md-4">
+    <h2 class="form-signin-heading">Sign Up Here</h2>
+
+    <form action="." role="form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <p class="required">
+                <label for="id_username" class="required">
+                    Username:
+                </label>
+                <input class="form-control" name="username" id="id_username" type="text">
+                <span class="helptext">
+                    Required30 characters or fewer.
+                </span>
+            </p>
+            <p class="required">
+                <label for="id_email" class="required">
+                    Email:
+                </label>
+                <input type='email' class="form-control" id="id_email" name="email">
+            </p>
+            <p class="required">
+                <label for="id_password1" class="required">
+                    Password:
+                </label>
+                <input class="form-control" id="id_password1" name="password1" type="password">
+
+            </p>
+            <p class="required">
+                <label for="id_password2" class="required">
+                    Password confirmation:
+                </label>
+                <input type="password" class="form-control" id="id_password2" name="password2">
+                <span class="helptext">
+                    Enter the same password as before, for verification.
+                </span>
+            </p>
+
+        </div>
+        <div class="offset-md-9">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    </div>
+{% endblock %}
+
