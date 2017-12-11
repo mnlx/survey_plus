@@ -1,12 +1,17 @@
-#My django testing evironment
+# Survey Setup Site
 
 I use this repository to test new modules or apps designed for django. Many files are related to Heroku's platform specific way of launching apps.
 
-##Currently using:
+## General Short-Term goals:
+- Setup a survey making site
+- Launch in Heroku platform
 
-    -registration redux
-    -django CMS
-    -django rest framework
-    -gunicorn and uwsgi
-    -nginx server
+## General Long-Term goals:
+- Add email deliverable surveys
+
+###### LIBS:
+
+    registration redux
+    django rest framework
+
      
